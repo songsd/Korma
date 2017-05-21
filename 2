@@ -1,0 +1,34 @@
+from des import encrypt,decrypt
+import base64
+import string
+import random
+def random_string(size=24, chars= string.digits+string.ascii_letters):
+    return ''.join(random.choice(chars) for _ in range(size))
+
+def encrypt(key, s):
+    return base64.encodestring(triple_des(key).encrypt(s, padmode=PAD_PKCS5))
+
+
+def decrypt(key, es):
+    return triple_des(key).decrypt(base64.decodestring(es))
+
+file_object = open('')
+try:
+    all_the_text = file_object.read( )
+finally:
+    file_object.close( )
+
+
+txt = """
+
+"""
+
+r = decrypt(k,txt)
+rb = base64.decodestring(r)
+
+file_object = open('','wb')
+try:
+    all_the_text = file_object.write(rb)
+    # print(all_the_text)
+finally:
+    file_object.close( )
